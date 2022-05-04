@@ -3,7 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { DemoComponent } from './demo.component';
 
 const routes: Routes = [
-  { path:'', component: DemoComponent }
+  { path:'', component: DemoComponent,
+    children: [
+      {path: 'controles',
+        loadChildren:()=>import('./pages/controles/controles.module').then(m=>m.ControlesModule)},
+      {path: 'shared',
+        loadChildren:()=>import('./pages/shared/shared.module').then(m=>m.SharedModule)}
+    ]
+  }
 ];
 
 @NgModule({

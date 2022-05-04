@@ -2,7 +2,11 @@
   <div class="app-page__header">
     <h1>Demo</h1>
     <div class="app_page__content">
-      Demo contenido
+      <div class="navigation">
+        <a class="app-a" routerLinkActive="app-a_active" routerLink="controles">Controles</a>
+        <a class="app-a" routerLinkActive="app-a_active" routerLink="shared">Shared</a>
+      </div>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
