@@ -1,13 +1,19 @@
 <h2>Formularios de Angular</h2>
-<app-button (click)="onPatchValue()">Agregar texto</app-button>
 
 <form
-  [formGroup]="form"
-  novalidate
-  autocomplete="off"
-  (ngSubmit)="onSubmit()"
+[formGroup]="form"
+novalidate
+autocomplete="off"
+(ngSubmit)="onSubmit()"
 >
-  <app-form-field>
+  <app-button (click)="onPatchValue()">Agregar texto</app-button>
+  <app-button (click)="organizarElemento()">Organizar</app-button>
+  <br/> <br/>
+  <app-form-field
+    label="Input prueba"
+    [required]="true"
+    [control]="form.controls.input"
+    [isInline]="isInline">
     <app-input formControlName="input" ></app-input>
   </app-form-field>
 </form>

@@ -9,11 +9,19 @@ import { FormBuilder, FormGroup, Validators }
 })
 export class SharedComponent implements OnInit {
   form!: FormGroup;
+  isInline!: boolean;
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      input: [null]
+      input: [null, {
+        updateOn: 'blur',
+        validators: [
+          Validators.required,
+          Validators.minLength(3)
+        ]
+      }]
     })
   }
   onPatchValue(): void {
@@ -21,5 +29,8 @@ export class SharedComponent implements OnInit {
   }
   onSubmit(): void {
     console.log('Presiono el btn');
+  }
+  organizarElemento() {
+    this.isInline = !this.isInline;
   }
 }
