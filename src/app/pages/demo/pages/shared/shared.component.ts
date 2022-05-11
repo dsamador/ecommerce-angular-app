@@ -16,7 +16,7 @@ export class SharedComponent implements OnInit {
       input: [null]
     })
   }
-  onPatchValue():void {
+  onPatchValue(): void {
     this.form.patchValue({input: 'David'});
   }
   onSubmit(): void {
