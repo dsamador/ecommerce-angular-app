@@ -1,5 +1,7 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
+type PasswordType = 'password' | 'text';
 
 @Component({
   selector: 'app-password',
@@ -13,9 +15,48 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     }
   ]
 })
-export class PasswordComponent implements OnInit {
+export class PasswordComponent implements OnInit, ControlValueAccessor {
 
-  constructor() { }
+  value!: string;
+  isDisabled!: boolean;
+  passwordType!: PasswordType;
+
+  @Input() placeholder!: string;
+  @Output() changed = new EventEmitter<string>();
+
+  constructor() {
+    this.passwordType = 'password'
+  }
+
+  private propagateChange: any = () => {}
+  private propagateTouched: any = () => {}
+
+  writeValue(value: string): void {
+    this.value = value;
+  }
+  registerOnChange(fn: any): void {
+    this.propagateChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.propagateTouched = fn;
+  }
+  setDisabledState(isDisabled: boolean): void {
+    this.isDisabled = isDisabled;
+  }
+
+  onKeyup(event: Event): void {
+    const { target } = event;
+    this.value = (target as HTMLInputElement).value;
+    this.propagateChange(this.value);
+    this.changed.emit(this.value);
+  }
+  onBlur(event: Event): void {
+    this.propagateTouched();
+  }
+
+  togglePassword(): void {
+    this.passwordType = this.passwordType == 'password' ? 'text' : 'password';
+  }
 
   ngOnInit(): void {
   }
