@@ -3,8 +3,7 @@ import { FormFieldModule } from './form-field/form-field.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputModule } from './input/input.module';
-
-
+import { SelectModule } from './select/select.module';
 
 @NgModule({
   declarations: [],
@@ -12,12 +11,14 @@ import { InputModule } from './input/input.module';
     CommonModule,
     InputModule,
     FormFieldModule,
-    PasswordModule
+    PasswordModule,
+    SelectModule
   ],
   exports: [
     InputModule,
     FormFieldModule,
-    PasswordModule
+    PasswordModule,
+    SelectModule
   ]
 })
 export class ControlsModule { }
