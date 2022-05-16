@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputModule } from './input/input.module';
 import { SelectModule } from './select/select.module';
+import { CheckboxesModule } from './checkboxes/checkboxes.module';
 
 @NgModule({
   declarations: [],
@@ -12,13 +13,15 @@ import { SelectModule } from './select/select.module';
     InputModule,
     FormFieldModule,
     PasswordModule,
-    SelectModule
+    SelectModule,
+    CheckboxesModule
   ],
   exports: [
     InputModule,
     FormFieldModule,
     PasswordModule,
-    SelectModule
+    SelectModule,
+    CheckboxesModule
   ]
 })
 export class ControlsModule { }
