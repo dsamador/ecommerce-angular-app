@@ -1,5 +1,6 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, Input, Output, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 type Value = number;
 
@@ -16,6 +17,16 @@ type Value = number;
   ]
 })
 export class DateComponent implements OnInit, ControlValueAccessor {
+
+  @Input() placeholder!: string;
+  @Input() min!: Date;
+  @Input() max!: Date;
+
+  @Output() changed = new EventEmitter<Value>();
+
+  get inputValue(): Date {
+    return this.value ? new Date(this.value) : new Date();
+  }
 
   value!: Value;
   isDisabled!: boolean;
@@ -41,8 +52,11 @@ export class DateComponent implements OnInit, ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
-  onChanged(): void {
-
+  onChanged(event: MatDatepickerInputEvent<Date>): void {
+    const value = event.value ? event.value.getTime() : new Date().getTime();
+    this.value = value;
+    this.propagateChange(value);
+    this.changed.emit(value)
   }
 
   onClosed(): void {
