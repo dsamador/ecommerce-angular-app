@@ -15,11 +15,38 @@ type Value = number;
     }
   ]
 })
-export class DateComponent implements OnInit {
+export class DateComponent implements OnInit, ControlValueAccessor {
+
+  value!: Value;
+  isDisabled!: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  private propagateChange: any = () => {}
+  private propagateTouched: any = () => {}
+
+  writeValue(value: Value): void {
+    this.value = value
+  }
+  registerOnChange(fn: any): void {
+    this.propagateChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.propagateTouched = fn;
+  }
+  setDisabledState(isDisabled: boolean): void{
+    this.isDisabled = isDisabled;
+  }
+
+  onChanged(): void {
+
+  }
+
+  onClosed(): void {
+    this.propagateTouched();
   }
 
 }
