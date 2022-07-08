@@ -1,6 +1,7 @@
-import { Component, OnInit, forwardRef, Input, Output, EventEmitter } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
-import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { Component, OnInit, forwardRef, Input, Output, EventEmitter }
+  from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormBuilder, FormGroup }
+  from '@angular/forms';
 
 export interface Value {
   from: number;
