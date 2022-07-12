@@ -8,4 +8,4 @@ export class HighlightPipe implements PipeTransform {
     const re = new RegExp(search, 'gi');
     return value.replace(re, match => `<b> ${match} </b>`)
   }
-}//4:57
+}
