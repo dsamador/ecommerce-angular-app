@@ -86,5 +86,12 @@ export class AutocompleteComponent implements OnInit,
       this.formControl.enable();
     }
   }
-//13:05
+
+  displayFn(item: ControlItem):string{
+    return item ? item.label : '';
+  }
+
+  onBlur(): void {
+    this.propagateTouched();
+  }
 }
