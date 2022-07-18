@@ -6,8 +6,10 @@ novalidate
 autocomplete="off"
 (ngSubmit)="onSubmit()"
 >
-  <app-button (click)="onPatchValue()">Agregar texto</app-button>
+  <app-button type="submit">Submit</app-button>
   <app-button (click)="organizarElemento()">Organizar</app-button>
+  <app-button (click)="onPatchValue()">Agregar texto</app-button>
+  <app-button (click)="onToggleDisabled()">Disabled</app-button>
   <br/> <br/>
 
   <app-form-field
