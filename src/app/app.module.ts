@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule, MatDateFormats, MAT_DATE_FORMATS, MAT_DATE_LOCALE }
   from '@angular/material/core';
 
+import { NotificationModule } from './services';
+
 const APP_DATE_FORMATS: MatDateFormats = {
   parse: {
     dateInput: { day: 'numeric', month: 'numeric', year: 'numeric'}
@@ -39,7 +41,8 @@ const APP_DATE_FORMATS: MatDateFormats = {
     AngularFireAuthModule,
     AngularFireStorageModule,
     BrowserAnimationsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NotificationModule.forRoot()
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
