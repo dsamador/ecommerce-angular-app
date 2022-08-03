@@ -11,13 +11,17 @@ export class NotificationService {
     this.snackBar.openFromComponent(NotificationComponent,
       {
         duration: 3000,
-        data: {},
-        panelClass: []
-      }
-    );
+        data: { message },
+        panelClass: ['mat-snackbar_error']
+      });
   }
 
   success(message: string): void {
-
+    this.snackBar.openFromComponent(NotificationComponent,
+      {
+        duration: 3000,
+        data: { message },
+        panelClass: ['mat-snackbar_success']
+      });
   }
 }

@@ -5,6 +5,8 @@ import { regex, regexErrors, markFormGroupTouched } from '@app/shared/utils';
 
 import { ControlItem } from '@app/models/frontend';
 
+import { NotificationService } from '@app/services';
+
 @Component({
   selector: 'app-shared',
   templateUrl: './shared.component.html',
@@ -17,7 +19,7 @@ export class SharedComponent implements OnInit {
   items!: ControlItem[];
   showSpinner: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private notification: NotificationService) {
     this.isInline = true;
     this.items = [
       { label: 'Uno', value: 1 },
@@ -117,9 +119,9 @@ export class SharedComponent implements OnInit {
     this.showSpinner = !this.showSpinner;
   }
   onSuccess(): void {
-
+    this.notification.success("El procedimiento fue exitoso");
   }
   onError(): void {
-
+    this.notification.error("Se encontraron errores en el proceso")
   }
 }
