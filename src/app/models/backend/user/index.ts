@@ -4,6 +4,8 @@ que pueda almacenar un objeto de tipo role ,
 para ello creamos una carpeta dentro de user */
 
 import { Employee, Recruiter } from "./roles";
+//export { Employee, Recruiter } from "./roles";
+export * from "./roles";
 import firebase from "firebase/app";
 
 export interface User {
