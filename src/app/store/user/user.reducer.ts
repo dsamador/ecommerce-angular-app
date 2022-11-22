@@ -18,7 +18,7 @@ const initialState: UserState = {
 
 /* Funcion reducer que atualiza la data
 del store */
-export function reducer(state = initialState, action: fromActions.All): UserState{
+export function reducer(state = initialState, action: fromActions.All | any): UserState{
   switch(action.type){
     //Sign In o Login
     case fromActions.Types.SIGN_IN_EMAIL: {
