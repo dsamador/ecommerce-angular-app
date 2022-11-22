@@ -12,7 +12,7 @@ export const environment = {
     }
   },
   actionCodeSettings: {
-    url: 'https://ecommerce-e4e6c.web.app/profile/new',
+    url: 'http://localhost:5200/demo',
     handleCodeInApp: true
   }
 };
