@@ -2,10 +2,49 @@
   <div class="app-page__header">
     <h1>Registro de Usuario</h1>
   </div>
-  <div class="app-page__content">
 
-  </div>
-  <div class="app-page__footer">
+  <form
+    [formGroup]="form"
+    (submit)="onSubmit()"
+    novalidate autocomplete="off"
+    (keyup.enter)="onSubmit()">
 
-  </div>
+
+    <div class="app-page__content">
+
+      <app-form-field label="Email"
+        [required]="true"
+        [control]="form.controls.email"
+        [isInline]="false"
+        [patternError]="regexErrors.email">
+        <app-input formControlName="email"></app-input>
+      </app-form-field>
+
+      <app-form-field label="Password"
+        [required]="true"
+        [control]="form.controls.password"
+        [isInline]="false"
+        [patternError]="regexErrors.password">
+        <app-password formControlName="password"></app-password>
+      </app-form-field>
+
+      <app-form-field label="Repite Password"
+        [required]="true"
+        [control]="form.controls.password"
+        [isInline]="false"
+        [patternError]="regexErrors.password">
+        <app-password formControlName="password"></app-password>
+      </app-form-field>
+
+    </div>
+
+    <div class="app-page__footer">
+      <app-button type="submit">Enviar </app-button>
+    </div>
+
+    <div class="error" [class.error_active]="form.hasError('repeat')">
+      El password no concuerda
+    </div>
+
+  </form>
 </div>
